@@ -1,0 +1,26 @@
+#1 - .env
+#2 - config
+#3 - auth.js
+#4 - db.js
+#5 - store.js
+#6 - authSlice.js
+#7 - Header.jsx
+#8 - Footer.jsx
+#9 - App.jsx
+#10 - Container.jsx
+#11 - Footer.jsx
+#12 - Logo.jsx
+#13 - Header.jsx
+#14 -
+#15 -
+#16 -
+#17 -
+#18 -
+#19 -
+#20 -
+#21 -
+#22 -
+#23 -
+#24 -
+#25 -
+#26 -
