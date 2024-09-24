@@ -78,6 +78,7 @@ const initialState = {
   status: false,
   userData: null,
   darkMode: localStorage.getItem('darkMode') === 'true', // Checking localStorage for darkMode
+  // loader: false, 
 };
 
 const authSlice = createSlice({
@@ -97,6 +98,9 @@ const authSlice = createSlice({
       // Saving the updated darkMode state to localStorage
       localStorage.setItem('darkMode', state.darkMode);
     },
+    // loading:(state)=>{
+    //   state.loader = !state.loader;
+    // }
   },
 });
 

@@ -313,6 +313,7 @@ import config from '../config/config.js';
 import { toast } from 'react-toastify';
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
+
 export class Service {
     client = new Client();
     databases;
@@ -329,8 +330,7 @@ export class Service {
     async createPost({ title, slug, content, imageId, status, userId, category }) {
         try {
             if (content.length > 5000) {
-                toast.error("Content Exceeds 5000 Characters");
-                throw new Error("Content exceeds the 5000 character limit.");
+                throw new Error("Content exceeds the 5000 character limit");
             }
 
             const response = await this.databases.createDocument(
@@ -350,16 +350,19 @@ export class Service {
             toast.success("Blog Successfully Added");
             return response;
         } catch (error) {
-            toast.error("An error occurred while creating the post");
-            console.log("Appwrite service :: createPost :: error", error);
+            if(error.message ==="Content exceeds the 5000 character limit"){
+                toast.error("Content Exceeds 5000 Characters, please reduce content length");
+            }else{
+                toast.error("An error occurred while creating the post");
+                console.log("Appwrite service :: createPost :: error", error);
+            }
         }
     }
 
     async updatePost(slug, { title, content, imageId, status, category }) {
         try {
             if (content.length > 5000) {
-                toast.error("Content Exceeds 5000 Characters");
-                throw new Error("Content exceeds the 5000 character limit.");
+                throw new Error("Content exceeds the 5000 character limit");
             }
 
             const response = await this.databases.updateDocument(
@@ -378,8 +381,12 @@ export class Service {
             toast.success("Post Successfully Updated");
             return response; 
         } catch (error) {
-            toast.error("An error occurred while updating the post");
-            console.log("Appwrite service :: updatePost :: error", error);
+            if(error.message ==="Content exceeds the 5000 character limit"){
+                toast.error("Content Exceeds 5000 Characters, please reduce content length");
+            }else{
+                toast.error("An error occurred while creating the post");
+                console.log("Appwrite service :: createPost :: error", error);
+            }
         }
     }
 

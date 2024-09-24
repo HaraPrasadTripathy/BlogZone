@@ -353,6 +353,10 @@ export default function PostForm({ post }) {
                 setTimeout(() => {
                     navigate(`/post/${dbPost.$id}`);
                 }, 2000); 
+            }else{
+                setTimeout(()=>{
+                    setLoading(false);  
+                },1500)
             }
         } else {
             const file = await appwriteService.uploadFile(data.image[0]);
@@ -367,6 +371,8 @@ export default function PostForm({ post }) {
                     setTimeout(() => {
                         navigate(`/post/${dbPost.$id}`);
                     }, 2000); 
+                }else{
+                    setLoading(false);
                 }
             }
         }
